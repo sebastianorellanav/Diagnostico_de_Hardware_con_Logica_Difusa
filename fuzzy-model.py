@@ -128,7 +128,69 @@ plt.plot(x_rendimiento, rendimiento_moderado)
 plt.plot(x_rendimiento, rendimiento_bueno)
 plt.plot(x_rendimiento, rendimiento_optimo)
 
-#reglas!
+#reglas
+
+input_sistema_refrigeracion = 10
+input_ram = 4
+input_procesador = 15
+input_tarjeta_grafica = 9
+input_fuente_poder = 11
+
+sistema_refrigeracion_level_malo = fuzz.interp_membership(x_sistema_refrigeracion, sistema_refrigeracion_malo, input_sistema_refrigeracion)
+sistema_refrigeracion_level_deficiente = fuzz.interp_membership(x_sistema_refrigeracion, sistema_refrigeracion_deficiente, input_sistema_refrigeracion)
+sistema_refrigeracion_level_moderado = fuzz.interp_membership(x_sistema_refrigeracion, sistema_refrigeracion_moderado , input_sistema_refrigeracion)
+sistema_refrigeracion_level_bueno = fuzz.interp_membership(x_sistema_refrigeracion, sistema_refrigeracion_bueno , input_sistema_refrigeracion)
+sistema_refrigeracion_level_optimo = fuzz.interp_membership(x_sistema_refrigeracion, sistema_refrigeracion_optimo , input_sistema_refrigeracion)
+
+ram_level_malo = fuzz.interp_membership(x_ram, ram_malo, input_ram)
+ram_level_deficiente = fuzz.interp_membership(x_ram, ram_deficiente, input_ram)
+ram_level_moderado = fuzz.interp_membership(x_ram, ram_moderado , input_ram)
+ram_level_bueno = fuzz.interp_membership(x_ram, ram_bueno , input_ram)
+ram_level_optimo = fuzz.interp_membership(x_ram, ram_optimo , input_ram)
+
+procesador_level_malo = fuzz.interp_membership(x_procesador, procesador_malo, input_procesador)
+procesador_level_deficiente = fuzz.interp_membership(x_procesador, procesador_deficiente, input_procesador)
+procesador_level_moderado = fuzz.interp_membership(x_procesador, procesador_moderado , input_procesador)
+procesador_level_bueno = fuzz.interp_membership(x_procesador, procesador_bueno , input_procesador)
+procesador_level_optimo = fuzz.interp_membership(x_procesador, procesador_optimo , input_procesador)
+
+tarjeta_grafica_level_malo = fuzz.interp_membership(x_tarjeta_grafica, tarjeta_grafica_malo, input_tarjeta_grafica)
+tarjeta_grafica_level_deficiente = fuzz.interp_membership(x_tarjeta_grafica, tarjeta_grafica_deficiente, input_tarjeta_grafica)
+tarjeta_grafica_level_moderado = fuzz.interp_membership(x_tarjeta_grafica, tarjeta_grafica_moderado , input_tarjeta_grafica)
+tarjeta_grafica_level_bueno = fuzz.interp_membership(x_tarjeta_grafica, tarjeta_grafica_bueno , input_tarjeta_grafica)
+tarjeta_grafica_level_optimo = fuzz.interp_membership(x_tarjeta_grafica, tarjeta_grafica_optimo , input_tarjeta_grafica)
+
+fuente_poder_level_malo = fuzz.interp_membership(x_fuente_poder, fuente_poder_malo, input_fuente_poder)
+fuente_poder_level_deficiente = fuzz.interp_membership(x_fuente_poder, fuente_poder_deficiente, input_fuente_poder)
+fuente_poder_level_moderado = fuzz.interp_membership(x_fuente_poder, fuente_poder_moderado , input_fuente_poder)
+fuente_poder_level_bueno = fuzz.interp_membership(x_fuente_poder, fuente_poder_bueno , input_fuente_poder)
+fuente_poder_level_optimo = fuzz.interp_membership(x_fuente_poder, fuente_poder_optimo , input_fuente_poder)
+
+#regla 1
+regla1 = np.fmin(sistema_refrigeracion_level_deficiente, 
+                np.fmin(ram_level_deficiente, 
+                np.fmin(procesador_level_deficiente, 
+                np.fmin(tarjeta_grafica_level_deficiente, fuente_poder_level_moderado))))
+
+rendimiento_activation_deficiente = np.fmin(regla1, rendimiento_deficiente)
+
+tip0 = np.zeros_like(x_rendimiento)
+
+fig, ax0 = plt.subplots(figsize=(8, 3))
+
+ax0.fill_between(x_rendimiento, tip0, rendimiento_activation_deficiente, facecolor='b', alpha=0.7)
+ax0.plot(x_rendimiento, rendimiento_deficiente, 'b', linewidth=0.5, linestyle='--', )
+
+for ax in (ax0,):
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.get_xaxis().tick_bottom()
+    ax.get_yaxis().tick_left()
+
+plt.tight_layout()
+
+
+
 #Si el sistema de refrigeración y la memoria RAM y el procesador y la tarjeta de
 #gráfica tienen un desempeño deficiente y la fuente de poder tiene un desempeño
 #moderado
