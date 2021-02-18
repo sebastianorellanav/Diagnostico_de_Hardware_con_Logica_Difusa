@@ -1,1 +1,2 @@
 # Diagnostico_de_Hardware_con_Logica_Difusa
+Ejecutar emporalmente desde app.py
