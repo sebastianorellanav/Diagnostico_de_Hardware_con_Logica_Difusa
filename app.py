@@ -10,10 +10,10 @@ resultado_BOA=0
 #entrada: Un string
 #salida: bool
 #Si La puntuacion de string es un numero retorna True, en caso contrario  False 
-def is_valid_float(float_string):
+def is_valid_int(int_string):
     try:
-        float_string= float(float_string)
-        if(float_string>=1 and float_string<=10):
+        int_string= int(int_string)
+        if(int_string>=1 and int_string<=10):
             return True
         else:
             return False
@@ -24,47 +24,47 @@ def is_valid_float(float_string):
 
 def calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, memoria_fisica_in, tarjeta_grafica_in, fuente_poder_in):
     sistema_refrigeracion_in=sistema_refrigeracion_in.get()
-    if not (is_valid_float(sistema_refrigeracion_in)):
+    if not (is_valid_int(sistema_refrigeracion_in)):
         messagebox.showinfo(message="La puntuacion del sistema de refrigeracion no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    sistema_refrigeracion_in=float(sistema_refrigeracion_in)
+    sistema_refrigeracion_in=int(sistema_refrigeracion_in)
 
     ram_in=ram_in.get()
-    if not (is_valid_float(ram_in)):
+    if not (is_valid_int(ram_in)):
         messagebox.showinfo(message="La puntuacion de la ram no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    ram_in=float(ram_in)
+    ram_in=int(ram_in)
 
     procesador_in=procesador_in.get()
-    if not (is_valid_float(procesador_in)):
+    if not (is_valid_int(procesador_in)):
         messagebox.showinfo(message="La puntuacion del procesador no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    procesador_in=float(procesador_in)
+    procesador_in=int(procesador_in)
 
     placa_madre_in=placa_madre_in.get()
-    if not (is_valid_float(placa_madre_in)):
+    if not (is_valid_int(placa_madre_in)):
         messagebox.showinfo(message="La puntuacion de la placa madre no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    placa_madre_in=float(placa_madre_in)
+    placa_madre_in=int(placa_madre_in)
 
 
     memoria_fisica_in=memoria_fisica_in.get()
-    if not (is_valid_float(memoria_fisica_in)):
+    if not (is_valid_int(memoria_fisica_in)):
         messagebox.showinfo(message="La puntuacion de la memoria fisica no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    memoria_fisica_in=float(memoria_fisica_in)
+    memoria_fisica_in=int(memoria_fisica_in)
 
     tarjeta_grafica_in=tarjeta_grafica_in.get()
-    if not (is_valid_float(tarjeta_grafica_in)):
+    if not (is_valid_int(tarjeta_grafica_in)):
         messagebox.showinfo(message="La puntuacion de la tarjeta gráfica no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    tarjeta_grafica_in=float(tarjeta_grafica_in)
+    tarjeta_grafica_in=int(tarjeta_grafica_in)
 
     fuente_poder_in=fuente_poder_in.get()
-    if not (is_valid_float(fuente_poder_in)):
+    if not (is_valid_int(fuente_poder_in)):
         messagebox.showinfo(message="La puntuacion de la fuente de poder no es válida, vuelva a ingresarlo", title="ERROR")
         return True
-    fuente_poder_in=float(fuente_poder_in)
+    fuente_poder_in=int(fuente_poder_in)
     print(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
 
     [resultado_BOA, resultado_COA]= fm.fuzzy_model(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
