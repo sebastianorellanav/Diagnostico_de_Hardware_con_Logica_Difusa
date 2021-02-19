@@ -17,62 +17,62 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 
 	# Input Membership Functions
 	# sistema de refrigeracion
-	sistema_refrigeracion_malo = fuzz.trapmf(x_sistema_refrigeracion, [0, 0, 2, 3])
-	sistema_refrigeracion_deficiente = fuzz.trapmf(x_sistema_refrigeracion, [2, 3, 5, 6])
-	sistema_refrigeracion_moderado = fuzz.trapmf(x_sistema_refrigeracion, [5, 6, 9, 11])
-	sistema_refrigeracion_bueno = fuzz.trapmf(x_sistema_refrigeracion, [7, 10, 15, 16])
-	sistema_refrigeracion_optimo = fuzz.trapmf(x_sistema_refrigeracion, [13, 16, 20, 20])
+	sistema_refrigeracion_malo = fuzz.trapmf(x_sistema_refrigeracion, [0, 0, 1, 2])
+	sistema_refrigeracion_deficiente = fuzz.trapmf(x_sistema_refrigeracion, [1, 2, 4, 5])
+	sistema_refrigeracion_moderado = fuzz.trapmf(x_sistema_refrigeracion, [3, 6, 7, 8])
+	sistema_refrigeracion_bueno = fuzz.trapmf(x_sistema_refrigeracion, [6.5, 7.5, 8, 9])
+	sistema_refrigeracion_optimo = fuzz.trapmf(x_sistema_refrigeracion, [8, 9, 10, 10])
+
 
 	# ram
-	ram_malo = fuzz.trapmf(x_ram, [0, 0, 2, 3])
-	ram_deficiente = fuzz.trapmf(x_ram, [2, 3, 5, 6])
-	ram_moderado = fuzz.trapmf(x_ram, [5, 6, 9, 11])
-	ram_bueno = fuzz.trapmf(x_ram, [7, 10, 15, 16])
-	ram_optimo = fuzz.trapmf(x_ram, [13, 16, 20, 20])
+	ram_malo = fuzz.trapmf(x_ram, [0, 0, 1, 3])
+	ram_deficiente = fuzz.trapmf(x_ram, [1.5, 3, 3.5, 5])
+	ram_moderado = fuzz.trapmf(x_ram, [3, 4, 5, 6])
+	ram_bueno = fuzz.trapmf(x_ram, [4.5, 5, 7, 8])
+	ram_optimo = fuzz.trapmf(x_ram, [6, 8, 10, 10])
 
 	# procesador
-	procesador_malo = fuzz.trapmf(x_procesador, [0, 0, 2, 3])
-	procesador_deficiente = fuzz.trapmf(x_procesador, [2, 3, 5, 6])
-	procesador_moderado = fuzz.trapmf(x_procesador, [5, 6, 9, 11])
-	procesador_bueno = fuzz.trapmf(x_procesador, [7, 10, 15, 16])
-	procesador_optimo = fuzz.trapmf(x_procesador, [13, 16, 20, 20])
+	procesador_malo = fuzz.trapmf(x_procesador, [0, 0, 2, 2.3])
+	procesador_deficiente = fuzz.trapmf(x_procesador, [1, 3, 3.5, 4])
+	procesador_moderado = fuzz.trapmf(x_procesador, [3, 4.5, 6, 8])
+	procesador_bueno = fuzz.trapmf(x_procesador, [5, 6.5, 7.5, 9])
+	procesador_optimo = fuzz.trapmf(x_procesador, [7, 8, 10, 10])
 
 	# placa madre
-	placa_madre_malo = fuzz.trapmf(x_placa_madre, [0, 0, 2, 3])
-	placa_madre_deficiente = fuzz.trapmf(x_placa_madre, [2, 3, 5, 6])
-	placa_madre_moderado = fuzz.trapmf(x_placa_madre, [5, 6, 9, 11])
-	placa_madre_bueno = fuzz.trapmf(x_placa_madre, [7, 10, 15, 16])
-	placa_madre_optimo = fuzz.trapmf(x_placa_madre, [13, 16, 20, 20])
+	placa_madre_malo = fuzz.trapmf(x_placa_madre, [0, 0, 1, 3])
+	placa_madre_deficiente = fuzz.trapmf(x_placa_madre, [1, 2, 4, 5])
+	placa_madre_moderado = fuzz.trapmf(x_placa_madre, [4, 6, 7, 8])
+	placa_madre_bueno = fuzz.trapmf(x_placa_madre, [6.5, 7.5, 8, 9])
+	placa_madre_optimo = fuzz.trapmf(x_placa_madre, [7.5, 9, 10, 10])
 
-	# memoria fisica
+# memoria fisica
 	memoria_fisica_malo = fuzz.trapmf(x_memoria_fisica, [0, 0, 2, 3])
-	memoria_fisica_deficiente = fuzz.trapmf(x_memoria_fisica, [2, 3, 5, 6])
-	memoria_fisica_moderado = fuzz.trapmf(x_memoria_fisica, [5, 6, 9, 11])
-	memoria_fisica_bueno = fuzz.trapmf(x_memoria_fisica, [7, 10, 15, 16])
-	memoria_fisica_optimo = fuzz.trapmf(x_memoria_fisica, [13, 16, 20, 20])
+	memoria_fisica_deficiente = fuzz.trapmf(x_memoria_fisica, [2, 3, 3.5, 4])
+	memoria_fisica_moderado = fuzz.trapmf(x_memoria_fisica, [3.5, 4, 5.5, 6])
+	memoria_fisica_bueno = fuzz.trapmf(x_memoria_fisica, [5.5, 6, 7.0, 7.5])
+	memoria_fisica_optimo = fuzz.trapmf(x_memoria_fisica, [7, 7.5,10, 10])
 
 	# tarjeta grafica
 	tarjeta_grafica_malo = fuzz.trapmf(x_tarjeta_grafica, [0, 0, 2, 3])
 	tarjeta_grafica_deficiente = fuzz.trapmf(x_tarjeta_grafica, [2, 3, 5, 6])
-	tarjeta_grafica_moderado = fuzz.trapmf(x_tarjeta_grafica, [5, 6, 9, 11])
-	tarjeta_grafica_bueno = fuzz.trapmf(x_tarjeta_grafica, [7, 10, 15, 16])
-	tarjeta_grafica_optimo = fuzz.trapmf(x_tarjeta_grafica, [13, 16, 20, 20])
+	tarjeta_grafica_moderado = fuzz.trapmf(x_tarjeta_grafica, [5, 6,6.5, 7])
+	tarjeta_grafica_bueno = fuzz.trapmf(x_tarjeta_grafica, [6.5, 7, 7.5, 8])
+	tarjeta_grafica_optimo = fuzz.trapmf(x_tarjeta_grafica, [7.5, 8, 10, 10])
 
 	# fuente poder
-	fuente_poder_malo = fuzz.trapmf(x_fuente_poder, [0, 0, 2, 3])
-	fuente_poder_deficiente = fuzz.trapmf(x_fuente_poder, [2, 3, 5, 6])
-	fuente_poder_moderado = fuzz.trapmf(x_fuente_poder, [5, 6, 9, 11])
-	fuente_poder_bueno = fuzz.trapmf(x_fuente_poder, [7, 10, 15, 16])
-	fuente_poder_optimo = fuzz.trapmf(x_fuente_poder, [13, 16, 20, 20])
+	fuente_poder_malo = fuzz.trapmf(x_fuente_poder, [0, 2, 2, 3])
+	fuente_poder_deficiente = fuzz.trapmf(x_fuente_poder, [2, 3, 5, 5.5])
+	fuente_poder_moderado = fuzz.trapmf(x_fuente_poder, [5, 5.5, 6 ,7 ])
+	fuente_poder_bueno = fuzz.trapmf(x_fuente_poder, [6, 7, 8, 9])
+	fuente_poder_optimo = fuzz.trapmf(x_fuente_poder, [8, 9, 10, 10])
 
 
 	# rendimiento
-	rendimiento_malo = fuzz.trapmf(x_rendimiento, [0, 0, 2, 3])
-	rendimiento_deficiente = fuzz.trapmf(x_rendimiento, [2, 3, 5, 6])
-	rendimiento_moderado = fuzz.trapmf(x_rendimiento, [5, 6, 9, 11])
-	rendimiento_bueno = fuzz.trapmf(x_rendimiento, [7, 10, 15, 16])
-	rendimiento_optimo = fuzz.trapmf(x_rendimiento, [13, 16, 20, 20])
-
+	rendimiento_malo = fuzz.trapmf(x_rendimiento, [0, 0, 1.5, 2])
+	rendimiento_deficiente = fuzz.trapmf(x_rendimiento, [1.5, 2, 3, 3.5])
+	rendimiento_moderado = fuzz.trapmf(x_rendimiento, [3, 3.5, 4, 4.5 ])
+	rendimiento_bueno = fuzz.trapmf(x_rendimiento, [4, 4.5, 7, 8])
+	rendimiento_optimo = fuzz.trapmf(x_rendimiento, [7, 8, 10, 10])
 
 	sistema_refrigeracion_input = ff.category(x_sistema_refrigeracion,
 	                                          sistema_refrigeracion_malo,
