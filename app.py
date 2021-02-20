@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def is_valid_int(int_string):
     try:
         int_string= int(int_string)
-        if(int_string>=1 and int_string<=100):
+        if(int_string>=1 and int_string<=10):
             return True
         else:
             return False
@@ -69,6 +69,8 @@ def calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, me
         messagebox.showinfo(message="La puntuacion de la fuente de poder no es válida, vuelva a ingresarlo", title="ERROR")
         return True
     fuente_poder_in=int(fuente_poder_in)
+    print(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
+
     resultado = fm.fuzzy_model(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
     
     InterfazResultado(resultado)
@@ -173,7 +175,7 @@ def InicializarInterfaz():
     titulo = Label(ventana, text="Bienvenido, al Diagnosticador de Hardware", font=("Arial Bold", 15), relief= "groove", fg= "gray1")
     titulo.grid(column= 0, row= 0, columnspan=4, sticky= "nsew", pady=5)
 
-    descripcion = Label(ventana, text="Del 1 al 100 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
+    descripcion = Label(ventana, text="Del 1 al 10 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
     descripcion.grid(column= 0, row= 1, columnspan=4, sticky= "nw")
 
 
