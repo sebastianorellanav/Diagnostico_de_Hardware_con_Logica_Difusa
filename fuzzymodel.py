@@ -66,61 +66,61 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 
 	# Funciones de Pertenencia
 	# sistema de refrigeracion
-	sistema_refrigeracion_malo = fuzz.trimf(x_sistema_refrigeracion, [0,0,2])
-	sistema_refrigeracion_deficiente = fuzz.trimf(x_sistema_refrigeracion, [0,2,4])
-	sistema_refrigeracion_moderado = fuzz.trimf(x_sistema_refrigeracion, [2,4,6])
-	sistema_refrigeracion_bueno = fuzz.trimf(x_sistema_refrigeracion, [4,6,8])
-	sistema_refrigeracion_optimo = fuzz.trapmf(x_sistema_refrigeracion, [6,8,10,10])
+	sistema_refrigeracion_malo = fuzz.trapmf(x_sistema_refrigeracion, [0,0,1,4])
+	sistema_refrigeracion_deficiente = fuzz.trimf(x_sistema_refrigeracion, [0,3,6])
+	sistema_refrigeracion_moderado = fuzz.trimf(x_sistema_refrigeracion, [2,5,8])
+	sistema_refrigeracion_bueno = fuzz.trimf(x_sistema_refrigeracion, [4,7,10])
+	sistema_refrigeracion_optimo = fuzz.trapmf(x_sistema_refrigeracion, [6,9,12,12])
 
 	# ram
-	ram_malo = fuzz.trimf(x_ram, [0,0,2])
-	ram_deficiente = fuzz.trimf(x_ram, [0,2,4])
-	ram_moderado = fuzz.trimf(x_ram, [2,4,6])
-	ram_bueno = fuzz.trimf(x_ram, [4,6,8])
-	ram_optimo = fuzz.trapmf(x_ram, [6,8,10,10])
+	ram_malo = fuzz.trapmf(x_ram, [0,0,1,4])
+	ram_deficiente = fuzz.trimf(x_ram, [0,3,6])
+	ram_moderado = fuzz.trimf(x_ram, [2,5,8])
+	ram_bueno = fuzz.trimf(x_ram, [4,7,10])
+	ram_optimo = fuzz.trapmf(x_ram, [6,9,12,12])
 
 	# procesador
-	procesador_malo = fuzz.trimf(x_procesador, [0,0,2])
-	procesador_deficiente = fuzz.trimf(x_procesador, [0,2,4])
-	procesador_moderado = fuzz.trimf(x_procesador, [2,4,6])
-	procesador_bueno = fuzz.trimf(x_procesador, [4,6,8])
-	procesador_optimo = fuzz.trapmf(x_procesador, [6,8,10,10])
+	procesador_malo = fuzz.trapmf(x_procesador, [0,0,1,4])
+	procesador_deficiente = fuzz.trimf(x_procesador, [0,3,6])
+	procesador_moderado = fuzz.trimf(x_procesador, [2,5,8])
+	procesador_bueno = fuzz.trimf(x_procesador, [4,7,10])
+	procesador_optimo = fuzz.trapmf(x_procesador, [6,9,12,12])
 
 	# placa madre
-	placa_madre_malo = fuzz.trimf(x_placa_madre, [0,0,2])
-	placa_madre_deficiente = fuzz.trimf(x_placa_madre, [0,2,4])
-	placa_madre_moderado = fuzz.trimf(x_placa_madre, [2,4,6])
-	placa_madre_bueno = fuzz.trimf(x_placa_madre, [4,6,8])
-	placa_madre_optimo = fuzz.trapmf(x_placa_madre, [6,8,10,10])
+	placa_madre_malo = fuzz.trapmf(x_placa_madre, [0,0,1,4])
+	placa_madre_deficiente = fuzz.trimf(x_placa_madre, [0,3,6])
+	placa_madre_moderado = fuzz.trimf(x_placa_madre, [2,5,8])
+	placa_madre_bueno = fuzz.trimf(x_placa_madre, [4,7,10])
+	placa_madre_optimo = fuzz.trapmf(x_placa_madre, [6,9,12,12])
 
 	# memoria fisica
-	memoria_fisica_malo = fuzz.trimf(x_memoria_fisica, [0,0,2])
-	memoria_fisica_deficiente = fuzz.trimf(x_memoria_fisica, [0,2,4])
-	memoria_fisica_moderado = fuzz.trimf(x_memoria_fisica, [2,4,6])
-	memoria_fisica_bueno = fuzz.trimf(x_memoria_fisica, [4,6,8])
-	memoria_fisica_optimo = fuzz.trapmf(x_memoria_fisica, [6,8,10,10])
+	memoria_fisica_malo = fuzz.trapmf(x_memoria_fisica, [0,0,1,4])
+	memoria_fisica_deficiente = fuzz.trimf(x_memoria_fisica, [0,3,6])
+	memoria_fisica_moderado = fuzz.trimf(x_memoria_fisica, [2,5,8])
+	memoria_fisica_bueno = fuzz.trimf(x_memoria_fisica, [4,7,10])
+	memoria_fisica_optimo = fuzz.trapmf(x_memoria_fisica, [6,9,12,12])
 
 	# tarjeta grafica
-	tarjeta_grafica_malo = fuzz.trimf(x_tarjeta_grafica, [0,0,2])
-	tarjeta_grafica_deficiente = fuzz.trimf(x_tarjeta_grafica, [0,2,4])
-	tarjeta_grafica_moderado = fuzz.trimf(x_tarjeta_grafica, [2,4,6])
-	tarjeta_grafica_bueno = fuzz.trimf(x_tarjeta_grafica, [4,6,8])
-	tarjeta_grafica_optimo = fuzz.trapmf(x_tarjeta_grafica, [6,8,10,10])
+	tarjeta_grafica_malo = fuzz.trapmf(x_tarjeta_grafica, [0,0,1,4])
+	tarjeta_grafica_deficiente = fuzz.trimf(x_tarjeta_grafica, [0,3,6])
+	tarjeta_grafica_moderado = fuzz.trimf(x_tarjeta_grafica, [2,5,8])
+	tarjeta_grafica_bueno = fuzz.trimf(x_tarjeta_grafica, [4,7,10])
+	tarjeta_grafica_optimo = fuzz.trapmf(x_tarjeta_grafica, [6,9,12,12])
 
 	# fuente poder
-	fuente_poder_malo = fuzz.trimf(x_fuente_poder, [0,0,2])
-	fuente_poder_deficiente = fuzz.trimf(x_fuente_poder, [0,2,4])
-	fuente_poder_moderado = fuzz.trimf(x_fuente_poder, [2,4,6])
-	fuente_poder_bueno = fuzz.trimf(x_fuente_poder, [4,6,8])
-	fuente_poder_optimo = fuzz.trapmf(x_fuente_poder, [6,8,10,10])
+	fuente_poder_malo = fuzz.trapmf(x_fuente_poder, [0,0,1,4])
+	fuente_poder_deficiente = fuzz.trimf(x_fuente_poder, [0,3,6])
+	fuente_poder_moderado = fuzz.trimf(x_fuente_poder, [2,5,8])
+	fuente_poder_bueno = fuzz.trimf(x_fuente_poder, [4,7,10])
+	fuente_poder_optimo = fuzz.trapmf(x_fuente_poder, [6,9,12,12])
 
 	# Consecuente
 	# rendimiento
-	rendimiento_malo = fuzz.trimf(x_rendimiento, [0,0,2])
-	rendimiento_deficiente = fuzz.trimf(x_rendimiento, [0,2,4])
-	rendimiento_moderado = fuzz.trimf(x_rendimiento, [2,4,6])
-	rendimiento_bueno = fuzz.trimf(x_rendimiento, [4,6,8])
-	rendimiento_optimo = fuzz.trapmf(x_rendimiento, [6,8,10,10])
+	rendimiento_malo = fuzz.trapmf(x_rendimiento, [0,0,1,4])
+	rendimiento_deficiente = fuzz.trimf(x_rendimiento, [0,3,6])
+	rendimiento_moderado = fuzz.trimf(x_rendimiento, [2,5,8])
+	rendimiento_bueno = fuzz.trimf(x_rendimiento, [4,7,10])
+	rendimiento_optimo = fuzz.trapmf(x_rendimiento, [6,9,12,12])
 
 	###################################################################################################################################
 	# Se grafican las funciones de pertenencia
@@ -135,11 +135,11 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 
 	ax0.legend()
 
-	ax1.plot(x_ram, ram_malo, 'b', linewidth=1.5, label='Malo')
+	ax1.plot(x_ram, ram_malo, 'b', linewidth=1.5, label='Mala')
 	ax1.plot(x_ram, ram_deficiente, 'g', linewidth=1.5, label='Deficiente')
-	ax1.plot(x_ram, ram_moderado, 'r', linewidth=1.5, label='Moderado')
-	ax1.plot(x_ram, ram_bueno, c = 'darkorange', linewidth=1.5, label='Bueno')
-	ax1.plot(x_ram, ram_optimo, c = 'magenta', linewidth=1.5, label='Optimo')
+	ax1.plot(x_ram, ram_moderado, 'r', linewidth=1.5, label='Moderada')
+	ax1.plot(x_ram, ram_bueno, c = 'darkorange', linewidth=1.5, label='Buena')
+	ax1.plot(x_ram, ram_optimo, c = 'magenta', linewidth=1.5, label='Optima')
 	ax1.set_title('Ram')
 	ax1.legend()
 
@@ -163,11 +163,11 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax0.set_title('Procesador')
 	ax0.legend()
 
-	ax1.plot(x_placa_madre, placa_madre_malo, 'b', linewidth=1.5, label='Malo')
+	ax1.plot(x_placa_madre, placa_madre_malo, 'b', linewidth=1.5, label='Mala')
 	ax1.plot(x_placa_madre, placa_madre_deficiente, 'g', linewidth=1.5, label='Deficiente')
-	ax1.plot(x_placa_madre, placa_madre_moderado, 'r', linewidth=1.5, label='Moderado')
-	ax1.plot(x_placa_madre, placa_madre_bueno, c = 'darkorange', linewidth=1.5, label='Bueno')
-	ax1.plot(x_placa_madre, placa_madre_optimo, c = 'magenta', linewidth=1.5, label='Optimo')
+	ax1.plot(x_placa_madre, placa_madre_moderado, 'r', linewidth=1.5, label='Moderada')
+	ax1.plot(x_placa_madre, placa_madre_bueno, c = 'darkorange', linewidth=1.5, label='Buena')
+	ax1.plot(x_placa_madre, placa_madre_optimo, c = 'magenta', linewidth=1.5, label='Optima')
 	ax1.set_title('Placa madre')
 	ax1.legend()
 
@@ -184,27 +184,27 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	fig2, (ax1, ax2, ax3) = plt.subplots(nrows=3, figsize=(8, 12))
 	plt.subplots_adjust(hspace= 0.4)
 
-	ax1.plot(x_memoria_fisica, memoria_fisica_malo, 'b', linewidth=1.5, label='Malo')
+	ax1.plot(x_memoria_fisica, memoria_fisica_malo, 'b', linewidth=1.5, label='Mala')
 	ax1.plot(x_memoria_fisica, memoria_fisica_deficiente, 'g', linewidth=1.5, label='Deficiente')
-	ax1.plot(x_memoria_fisica, memoria_fisica_moderado, 'r', linewidth=1.5, label='Moderado')
-	ax1.plot(x_memoria_fisica, memoria_fisica_bueno, c = 'darkorange', linewidth=1.5, label='Bueno')
-	ax1.plot(x_memoria_fisica, memoria_fisica_optimo, c = 'magenta', linewidth=1.5, label='Optimo')
+	ax1.plot(x_memoria_fisica, memoria_fisica_moderado, 'r', linewidth=1.5, label='Moderada')
+	ax1.plot(x_memoria_fisica, memoria_fisica_bueno, c = 'darkorange', linewidth=1.5, label='Buena')
+	ax1.plot(x_memoria_fisica, memoria_fisica_optimo, c = 'magenta', linewidth=1.5, label='Optima')
 	ax1.set_title('Memoria física')
 	ax1.legend()
 
-	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_malo, 'b', linewidth=1.5, label='Malo')
+	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_malo, 'b', linewidth=1.5, label='Mala')
 	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_deficiente, 'g', linewidth=1.5, label='Deficiente')
-	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_moderado, 'r', linewidth=1.5, label='Moderado')
-	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_bueno, c = 'darkorange', linewidth=1.5, label='Bueno')
-	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_optimo, c = 'magenta', linewidth=1.5, label='Optimo')
+	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_moderado, 'r', linewidth=1.5, label='Moderada')
+	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_bueno, c = 'darkorange', linewidth=1.5, label='Buena')
+	ax2.plot(x_tarjeta_grafica, tarjeta_grafica_optimo, c = 'magenta', linewidth=1.5, label='Optima')
 	ax2.set_title('Tarjeta gráfica')
 	ax2.legend()
 
-	ax3.plot(x_fuente_poder, fuente_poder_malo, 'b', linewidth=1.5, label='Malo')
+	ax3.plot(x_fuente_poder, fuente_poder_malo, 'b', linewidth=1.5, label='Mala')
 	ax3.plot(x_fuente_poder, fuente_poder_deficiente, 'g', linewidth=1.5, label='Deficiente')
-	ax3.plot(x_fuente_poder, fuente_poder_moderado, 'r', linewidth=1.5, label='Moderado')
-	ax3.plot(x_fuente_poder, fuente_poder_bueno, c = 'darkorange', linewidth=1.5, label='Bueno')
-	ax3.plot(x_fuente_poder, fuente_poder_optimo, c = 'magenta', linewidth=1.5, label='Optimo')
+	ax3.plot(x_fuente_poder, fuente_poder_moderado, 'r', linewidth=1.5, label='Moderada')
+	ax3.plot(x_fuente_poder, fuente_poder_bueno, c = 'darkorange', linewidth=1.5, label='Buena')
+	ax3.plot(x_fuente_poder, fuente_poder_optimo, c = 'magenta', linewidth=1.5, label='Optima')
 	ax3.set_title('Fuente de poder')
 	ax3.legend()
 
@@ -242,7 +242,7 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	# Regla 4
 	regla4 =np.fmax(fuente_poder_moderado[fuente_poder_in],
 			np.fmax(memoria_fisica_bueno[memoria_fisica_in],
-			np.fmax(placa_madre_moderado[placa_madre_in],sistema_refrigeracion_optimo[sistema_refrigeracion_in])))
+			np.fmax(placa_madre_moderado[placa_madre_in],sistema_refrigeracion_bueno[sistema_refrigeracion_in])))
 
 	# Regla 5
 	regla5 =np.fmin(ram_optimo[ram_in],placa_madre_optimo[placa_madre_in])
@@ -260,6 +260,13 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 			np.fmin(tarjeta_grafica_moderado[tarjeta_grafica_in], 
 			placa_madre_bueno[placa_madre_in]))))
 
+	regla8 =np.fmin(sistema_refrigeracion_malo[sistema_refrigeracion_in],
+			np.fmin(ram_malo[ram_in], 
+			np.fmin(procesador_malo[procesador_in],
+			placa_madre_malo[placa_madre_in])))
+
+	
+
 	# Se compone la regla con el consecuente
 	imp1= np.fmin(regla1,rendimiento_deficiente)
 	imp2= np.fmin(regla2,rendimiento_bueno)
@@ -268,6 +275,7 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	imp5= np.fmin(regla5,rendimiento_optimo)
 	imp6= np.fmin(regla6,rendimiento_malo)
 	imp7= np.fmin(regla7,rendimiento_moderado)
+	imp8 = np.fmin(regla8, rendimiento_malo)
 
 	# Rendimiento inicial (cero)
 	rendimiento0 = np.zeros_like(x_rendimiento)
@@ -290,6 +298,8 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax0.plot(x_rendimiento, rendimiento_malo, 'k', linewidth=0.5, linestyle='--')
 	ax0.fill_between(x_rendimiento, rendimiento0, imp7, facecolor='y', alpha=0.7)
 	ax0.plot(x_rendimiento, rendimiento_moderado, 'k', linewidth=0.5, linestyle='--')
+	ax0.fill_between(x_rendimiento, rendimiento0, imp8, facecolor='y', alpha=0.7)
+	ax0.plot(x_rendimiento, rendimiento_moderado, 'k', linewidth=0.5, linestyle='--')
 	ax0.set_ylabel("Grado de pertenencia")
 	ax0.set_xlabel("Grado de rendimiento (Puntuación)")
 	ax0.set_title('Nivel de rendimiento')
@@ -303,7 +313,7 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 
 	# Se unen todas las reglas
 	aggregate_membership = np.fmax(imp1, np.fmax(imp2, np.fmax(imp3, np.fmax(imp4,
-									np.fmax(imp5, np.fmax(imp6, imp7))))))
+									np.fmax(imp5, np.fmax(imp6, np.fmax(imp7, imp8)))))))
 
 	# Se desfucifica utilizando centroide y bisector
 	if areaZero(aggregate_membership):

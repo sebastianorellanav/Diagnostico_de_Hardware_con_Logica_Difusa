@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 def is_valid_int(int_string):
     try:
         int_string= int(int_string)
-        if(int_string>=1 and int_string<=10):
+        if(int_string>=0 and int_string<=12):
             return True
         else:
             return False
@@ -174,7 +174,7 @@ def InicializarInterfaz():
     titulo = Label(ventana, text="Bienvenido, al Diagnosticador de Hardware", font=("Arial Bold", 15), relief= "groove", fg= "gray1")
     titulo.grid(column= 0, row= 0, columnspan=4, sticky= "nsew", pady=5)
 
-    descripcion = Label(ventana, text="Del 1 al 10 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
+    descripcion = Label(ventana, text="Del 0 al 12 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
     descripcion.grid(column= 0, row= 1, columnspan=4, sticky= "nw")
 
 
