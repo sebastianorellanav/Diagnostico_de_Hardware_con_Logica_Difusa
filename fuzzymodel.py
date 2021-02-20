@@ -1,7 +1,6 @@
 import skfuzzy as fuzz
 import numpy as np
 import matplotlib.pyplot as plt 
-import fuzzyfunctions as ff 
 
 # Función que verifica si el area bajo la curva es cero
 # Entrada: lista
