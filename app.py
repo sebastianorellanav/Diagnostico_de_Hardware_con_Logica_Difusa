@@ -167,14 +167,13 @@ def InicializarInterfaz():
     helpmenu = Menu(menubar, tearoff=0)
     helpmenu.add_command(label="Instrucciones")
     menubar.add_cascade(label="Archivo", menu=filemenu)
-    menubar.add_cascade(label="Ayuda", menu=helpmenu)
 
     
     # Titulo
     titulo = Label(ventana, text="Bienvenido, al Diagnosticador de Hardware", font=("Arial Bold", 15), relief= "groove", fg= "gray1")
     titulo.grid(column= 0, row= 0, columnspan=4, sticky= "nsew", pady=5)
 
-    descripcion = Label(ventana, text="Del 0 al 12 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
+    descripcion = Label(ventana, text="Del 0 al 10 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
     descripcion.grid(column= 0, row= 1, columnspan=4, sticky= "nw")
 
 
