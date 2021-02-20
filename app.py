@@ -75,21 +75,27 @@ def calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, me
     
     InterfazResultado(resultado)
     return True
-
+#Función que borra la venta de resultados y los graficos
+#Entrada: ventana de tkinter
+#Salida: -
+def consultar_otra_vez(ventana_resultado):
+    plt.close('all')
+    ventana_resultado.destroy()
 # Función que genera una ventana con los resultados
 # Entrada: diccionario (resultados)
 # Salida: -
 def InterfazResultado(resultado):
     ventana_resultado = Tk()
-    ventana_resultado.geometry("330x250")
+    ventana_resultado.geometry()
     ventana_resultado.title("Consultas")
-    ventana_resultado.wm_iconbitmap("1.ico")
+    ventana_resultado.wm_iconbitmap("imgs/1.ico")
     titulo = Label(ventana_resultado, text="Resultados Obtenidos", font=("Arial Bold", 13), relief= "groove")
-    titulo.grid(column= 0, row= 0, columnspan=4, pady=5)
+
 
     if(resultado["error"] == 0):
+        titulo.grid(column= 0, row= 0, columnspan=2, pady=5)
         labelCOA = Label(ventana_resultado, text="Resultado calculado con centro de área (COA)", font=("Arial Bold",11), fg= "gray10")
-        labelCOA.grid(column= 0, row= 1, columnspan=4)
+        labelCOA.grid(column= 0, row= 1, columnspan=2)
 
         nivelRendimientoCOALabel = Label(ventana_resultado, text="Nivel de Rendimiento: ", font=("Arial Bold", 10),  fg= "gray10",anchor= "w")
         nivelRendimientoCOALabel.grid(column= 0, row= 2 ,padx=4)
@@ -116,16 +122,22 @@ def InterfazResultado(resultado):
         pertenenciaBOALabel.grid(column= 0, row= 8,padx=4)
         pertenenciaBOA = Label(ventana_resultado, text=str(float(resultado["boa"][0])*100)+"%", font=("Arial Bold", 10),  fg= "gray10", relief= "ridge",anchor= "w")
         pertenenciaBOA.grid(column= 1, row= 8,sticky= "nesw")
+        graficosBoton=Button(ventana_resultado,text="Ver Gráficos",command=lambda: plt.show())
+        graficosBoton.grid(column= 0, row= 13, sticky="nesw", pady=10)
+
+        salir=Button(ventana_resultado,text="Consultar de nuevo",command=lambda:consultar_otra_vez(ventana_resultado) )
+        salir.grid(column= 1, row= 13,sticky="nesw", pady = 10)
     
     else:
-        labelCOA = Label(ventana_resultado, text="El resultado de la desfucificación es 0", font=("Arial Bold",12), fg= "gray10")
+        titulo.grid(column= 0, row= 0, columnspan=4, pady=5)
+        labelCOA = Label(ventana_resultado, text="El resultado de la desfucificación es 0\nNo se ha encontrado el nivel de rendimiento\nSe recomienda consultar con un profesional", font=("Arial Bold",12), fg= "gray10",justify="center")
         labelCOA.grid(column= 0, row= 1, columnspan=4, sticky= "nw")
 
-    graficosBoton=Button(ventana_resultado,text="Ver Gráficos",command=lambda: plt.show())
-    graficosBoton.grid(column= 0, row= 13, sticky="nesw", pady=10)
+        graficosBoton=Button(ventana_resultado,text="Ver Gráficos",command=lambda: plt.show())
+        graficosBoton.grid(column= 0, row= 13, columnspan=2, sticky="nesw", pady=10)
 
-    salir=Button(ventana_resultado,text="Consultar de nuevo",command=lambda: ventana_resultado.destroy())
-    salir.grid(column= 1, row= 13, sticky="nesw", pady = 10)
+        salir=Button(ventana_resultado,text="Consultar de nuevo",command=lambda: consultar_otra_vez(ventana_resultado))
+        salir.grid(column= 2, row= 13, columnspan=2,sticky="nesw", pady = 10)
 
     ventana_resultado.mainloop()
 
@@ -138,8 +150,8 @@ def InicializarInterfaz():
     var = IntVar()
     ventana.geometry("470x320")
     ventana.title("Consultas")
-    ventana.wm_iconbitmap("1.ico")
-    img= Image.open("logicadifusa.jpg")
+    ventana.wm_iconbitmap("imgs/1.ico")
+    img= Image.open("imgs/logicadifusa.jpg")
     img= img.resize((120,120))
     img = ImageTk.PhotoImage(img)
     

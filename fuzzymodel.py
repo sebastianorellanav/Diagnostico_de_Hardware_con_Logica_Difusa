@@ -56,13 +56,13 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 
 	# Vectores x de cada una de las funciones de pertenencia
 	x_sistema_refrigeracion = np.arange(0, 11, 1)
-	x_ram =  np.arange(0, 11, 1)
-	x_procesador  = np.arange(0, 11, 1)
-	x_placa_madre = np.arange(0, 11, 1)
-	x_memoria_fisica = np.arange(0, 11, 1)
-	x_tarjeta_grafica = np.arange(0, 11, 1)
-	x_fuente_poder = np.arange(0, 11, 1)
-	x_rendimiento = np.arange(0, 11, 1)
+	x_ram =  np.arange(0, 101, 1)
+	x_procesador  = np.arange(0, 101, 1)
+	x_placa_madre = np.arange(0, 101, 1)
+	x_memoria_fisica = np.arange(0, 101, 1)
+	x_tarjeta_grafica = np.arange(0, 101, 1)
+	x_fuente_poder = np.arange(0, 101, 1)
+	x_rendimiento = np.arange(0, 101, 1)
 
 	# Funciones de Pertenencia
 	# sistema de refrigeracion
