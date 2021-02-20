@@ -69,7 +69,6 @@ def calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, me
         messagebox.showinfo(message="La puntuacion de la fuente de poder no es válida, vuelva a ingresarlo", title="ERROR")
         return True
     fuente_poder_in=int(fuente_poder_in)
-    print(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
 
     resultado = fm.fuzzy_model(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
     

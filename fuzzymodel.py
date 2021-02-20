@@ -132,6 +132,7 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax0.plot(x_sistema_refrigeracion, sistema_refrigeracion_bueno, c = 'darkorange', linewidth=1.5, label='Bueno')
 	ax0.plot(x_sistema_refrigeracion, sistema_refrigeracion_optimo, c = 'magenta', linewidth=1.5, label='Optimo')
 	ax0.set_title('Sistema de refrigeracion')
+
 	ax0.legend()
 
 	ax1.plot(x_ram, ram_malo, 'b', linewidth=1.5, label='Malo')
@@ -142,8 +143,11 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax1.set_title('Ram')
 	ax1.legend()
 
-	# Turn off top/right axes
+	# Se hacen invisibles las lineas de arriba y la derecha
+
 	for ax in (ax0, ax1):
+		ax.set_ylabel("Grado de pertenencia")
+		ax.set_xlabel("Grado de funcionalidad (Puntuación)")
 		ax.spines['top'].set_visible(False)
 		ax.spines['right'].set_visible(False)
 		ax.get_xaxis().tick_bottom()
@@ -167,14 +171,18 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax1.set_title('Placa madre')
 	ax1.legend()
 
-	# Turn off top/right axes
+	# Se hacen invisibles las lineas de arriba y la derecha
+
 	for ax in (ax0, ax1):
+		ax.set_ylabel("Grado de pertenencia")
+		ax.set_xlabel("Grado de funcionalidad (Puntuación)")
 		ax.spines['top'].set_visible(False)
 		ax.spines['right'].set_visible(False)
 		ax.get_xaxis().tick_bottom()
 		ax.get_yaxis().tick_left()
 
 	fig2, (ax1, ax2, ax3) = plt.subplots(nrows=3, figsize=(8, 12))
+	plt.subplots_adjust(hspace= 0.4)
 
 	ax1.plot(x_memoria_fisica, memoria_fisica_malo, 'b', linewidth=1.5, label='Malo')
 	ax1.plot(x_memoria_fisica, memoria_fisica_deficiente, 'g', linewidth=1.5, label='Deficiente')
@@ -200,13 +208,16 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax3.set_title('Fuente de poder')
 	ax3.legend()
 
-	# Turn off top/right axes
+	# Se hacen invisibles las lineas de arriba y la derecha
+
 	for ax in (ax1, ax2, ax3):
+		ax.set_ylabel("Grado de pertenencia")
+		ax.set_xlabel("Grado de funcionalidad (Puntuación)")
 		ax.spines['top'].set_visible(False)
 		ax.spines['right'].set_visible(False)
 		ax.get_xaxis().tick_bottom()
 		ax.get_yaxis().tick_left()
-
+	
 	##############################################################################################################################
 	# Reglas
 
@@ -279,15 +290,15 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 	ax0.plot(x_rendimiento, rendimiento_malo, 'k', linewidth=0.5, linestyle='--')
 	ax0.fill_between(x_rendimiento, rendimiento0, imp7, facecolor='y', alpha=0.7)
 	ax0.plot(x_rendimiento, rendimiento_moderado, 'k', linewidth=0.5, linestyle='--')
-
+	ax0.set_ylabel("Grado de pertenencia")
+	ax0.set_xlabel("Grado de rendimiento (Puntuación)")
 	ax0.set_title('Nivel de rendimiento')
 
-	# Turn off top/right axes
-	for ax in (ax0,):
-		ax.spines['top'].set_visible(False)
-		ax.spines['right'].set_visible(False)
-		ax.get_xaxis().tick_bottom()
-		ax.get_yaxis().tick_left()
+	# Se hacen invisibles las lineas de arriba y la derecha
+	ax.spines['top'].set_visible(False)
+	ax.spines['right'].set_visible(False)
+	ax.get_xaxis().tick_bottom()
+	ax.get_yaxis().tick_left()
 
 
 	# Se unen todas las reglas
@@ -296,7 +307,6 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 
 	# Se desfucifica utilizando centroide y bisector
 	if areaZero(aggregate_membership):
-		print("\n----->> Error <<-----\n")  # Aqui se puede cambiar por otro mensaje.
 		return dict(error = 1)
 
 	else:
@@ -329,8 +339,10 @@ def fuzzy_model(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in,
 		ax1.plot([rendimiento_BOA, rendimiento_BOA], [0, rendimiento_plot_BOA], 'k', linewidth=1.5, alpha=0.9)
 		ax1.set_title('Resultado al desfuzificar con BOA')
 
-		# Turn off top/right axes
+	# Se hacen invisibles las lineas de arriba y la derecha
 		for ax in (ax0, ax1):
+			ax.set_ylabel("Grado de pertenencia")
+			ax.set_xlabel("Grado de rendimiento (Puntuación)")
 			ax.spines['top'].set_visible(False)
 			ax.spines['right'].set_visible(False)
 			ax.get_xaxis().tick_bottom()
