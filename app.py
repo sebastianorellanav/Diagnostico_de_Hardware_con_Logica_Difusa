@@ -2,14 +2,11 @@ from tkinter import *
 from tkinter import messagebox
 import fuzzymodel as fm
 from PIL import ImageTk, Image
+import matplotlib.pyplot as plt 
 
-# Se crea la ventana principal
-ventana = Tk()
-resultado_COA=0
-resultado_BOA=0
-#entrada: Un string
-#salida: bool
-#Si La puntuacion de string es un numero retorna True, en caso contrario  False 
+# Funcion que verifica si la puntuacion de string es un numero retorna True, en caso contrario  False 
+# Entrada: Un string
+# Salida: booleano
 def is_valid_int(int_string):
     try:
         int_string= int(int_string)
@@ -20,8 +17,15 @@ def is_valid_int(int_string):
     except ValueError:
         return False
 
-
-
+# Función que verifica las entradas que ingresa el usuario
+# Entrada: entero (input sistema de refrigeracion)
+#          entero (input ram)
+#          entero (input procesador)
+#		   entero (input placa madre)
+#		   entero (input memoria física)
+#		   entero (input tarjeta gráfica)
+#		   entero (input fuente de poder)
+# Salida:  booleano
 def calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, memoria_fisica_in, tarjeta_grafica_in, fuente_poder_in):
     sistema_refrigeracion_in=sistema_refrigeracion_in.get()
     if not (is_valid_int(sistema_refrigeracion_in)):
@@ -67,20 +71,72 @@ def calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, me
     fuente_poder_in=int(fuente_poder_in)
     print(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
 
-    [resultado_BOA, resultado_COA]= fm.fuzzy_model(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
-    resultado_BOA="El resultado BOA fue "+str(resultado_BOA)
-    resultado_COA="El resultado COA fue "+str(resultado_COA)
-    text=resultado_BOA+'\n'+resultado_COA
-    messagebox.showinfo(message=text, title="Resultado")
+    resultado = fm.fuzzy_model(sistema_refrigeracion_in,ram_in,procesador_in,placa_madre_in,memoria_fisica_in,tarjeta_grafica_in,fuente_poder_in)
+    
+    InterfazResultado(resultado)
     return True
 
+# Función que genera una ventana con los resultados
+# Entrada: diccionario (resultados)
+# Salida: -
+def InterfazResultado(resultado):
+    ventana_resultado = Tk()
+    ventana_resultado.geometry("330x250")
+    ventana_resultado.title("Consultas")
+    ventana_resultado.wm_iconbitmap("1.ico")
+    titulo = Label(ventana_resultado, text="Resultados Obtenidos", font=("Arial Bold", 13), relief= "groove")
+    titulo.grid(column= 0, row= 0, columnspan=4, pady=5)
 
+    if(resultado["error"] == 0):
+        labelCOA = Label(ventana_resultado, text="Resultado calculado con centro de área (COA)", font=("Arial Bold",11), fg= "gray10")
+        labelCOA.grid(column= 0, row= 1, columnspan=4)
 
+        nivelRendimientoCOALabel = Label(ventana_resultado, text="Nivel de Rendimiento: ", font=("Arial Bold", 10),  fg= "gray10",anchor= "w")
+        nivelRendimientoCOALabel.grid(column= 0, row= 2 ,padx=4)
+        nivelRendimientoCOA = Label(ventana_resultado, text=str(resultado["coa"][1]), font=("Arial Bold", 10),  fg= "gray10", relief= "ridge",anchor= "w")
+        nivelRendimientoCOA.grid(column= 1, row= 2,sticky= "nesw")
 
+        pertenenciaCOALabel = Label(ventana_resultado, text="Porcentaje de Pertenencia: ", font=("Arial Bold", 10),  fg= "gray10",anchor= "w")
+        pertenenciaCOALabel.grid(column= 0, row= 3,padx=4)
+        pertenenciaCOA = Label(ventana_resultado, text=str(float(resultado["coa"][0])*100)+"%", font=("Arial Bold", 10),  fg= "gray10", relief= "ridge",anchor= "w")
+        pertenenciaCOA.grid(column= 1, row= 3,sticky= "nesw")
+
+        espacio1 = Label(ventana_resultado, text="", pady=5)
+        espacio1.grid(column= 0, row=4)
+
+        labelBOA = Label(ventana_resultado, text="Resultado calculado con bisector de área (BOA)", font=("Arial Bold",11))
+        labelBOA.grid(column= 0, row= 5, columnspan=4, sticky= "nw")
+
+        nivelRendimientoBOALabel = Label(ventana_resultado, text="Nivel de Rendimiento: ", font=("Arial Bold", 10),  fg= "gray10",anchor= "w")
+        nivelRendimientoBOALabel.grid(column= 0, row= 7,padx=4)
+        nivelRendimientoBOA = Label(ventana_resultado, text=str(resultado["boa"][1]), font=("Arial Bold", 10),  fg= "gray10", relief= "ridge",anchor= "w")
+        nivelRendimientoBOA.grid(column= 1, row= 7,sticky= "nesw")
+
+        pertenenciaBOALabel = Label(ventana_resultado, text="Porcentaje de Pertenencia: ", font=("Arial Bold", 10),  fg= "gray10",anchor= "w")
+        pertenenciaBOALabel.grid(column= 0, row= 8,padx=4)
+        pertenenciaBOA = Label(ventana_resultado, text=str(float(resultado["boa"][0])*100)+"%", font=("Arial Bold", 10),  fg= "gray10", relief= "ridge",anchor= "w")
+        pertenenciaBOA.grid(column= 1, row= 8,sticky= "nesw")
+    
+    else:
+        labelCOA = Label(ventana_resultado, text="El resultado de la desfucificación es 0", font=("Arial Bold",12), fg= "gray10")
+        labelCOA.grid(column= 0, row= 1, columnspan=4, sticky= "nw")
+
+    graficosBoton=Button(ventana_resultado,text="Ver Gráficos",command=lambda: plt.show())
+    graficosBoton.grid(column= 0, row= 13, sticky="nesw", pady=10)
+
+    salir=Button(ventana_resultado,text="Consultar de nuevo",command=lambda: ventana_resultado.destroy())
+    salir.grid(column= 1, row= 13, sticky="nesw", pady = 10)
+
+    ventana_resultado.mainloop()
+
+# Función que genera la ventana inicial para interactuar con el usuario
+# Entrada: - 
+# Salida: -
 def InicializarInterfaz():
     # inicio de interfaz
+    ventana = Tk()
     var = IntVar()
-    ventana.geometry("400x300")
+    ventana.geometry("470x320")
     ventana.title("Consultas")
     ventana.wm_iconbitmap("1.ico")
     img= Image.open("logicadifusa.jpg")
@@ -107,7 +163,7 @@ def InicializarInterfaz():
     titulo = Label(ventana, text="Bienvenido, al Diagnosticador de Hardware", font=("Arial Bold", 15), relief= "groove", fg= "gray1")
     titulo.grid(column= 0, row= 0, columnspan=4, sticky= "nsew", pady=5)
 
-    descripcion = Label(ventana, text="Del 1 al 10 que tan bien funcionan los siguientes componentes", font=("Arial Bold",9), fg= "gray10")
+    descripcion = Label(ventana, text="Del 1 al 10 que tan bien funcionan los siguientes componentes (Numeros Enteros)", font=("Arial Bold",9), fg= "gray10")
     descripcion.grid(column= 0, row= 1, columnspan=4, sticky= "nw")
 
 
@@ -149,8 +205,13 @@ def InicializarInterfaz():
     calcular=Button(ventana,text="Consultar",command=lambda: calculos(sistema_refrigeracion_in, ram_in, procesador_in, placa_madre_in, memoria_fisica_in, tarjeta_grafica_in, fuente_poder_in))
     calcular.grid(column= 3, row= 10, sticky="nesw")
     
+    calcular=Button(ventana,text="Salir",command=lambda: salir(ventana))
+    calcular.grid(column= 3, row= 11, sticky="nesw", pady=7)
+    
 
     # Mostrar interfaz
     ventana.mainloop()
 
-InicializarInterfaz()
+def salir(ventana):
+    ventana.destroy()
+    exit()
